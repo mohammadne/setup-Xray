@@ -1,0 +1,4 @@
+---
+default_ssh_port: 22
+configured_ssh_port: 222
+ssh_connection_timeout: "5"

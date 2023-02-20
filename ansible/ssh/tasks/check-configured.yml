@@ -1,0 +1,22 @@
+---
+# From localhost, check if we're able to reach {{ inventory_hostname }} on configured port
+- name: "Check if we're using the configured SSH port {{ configured_ssh_port }}"
+  wait_for:
+    port: "{{ configured_ssh_port }}"
+    state: "started"
+    host: "{{ inventory_hostname }}"
+    connect_timeout: "{{ ssh_connection_timeout }}"
+    timeout: "5"
+  delegate_to: "localhost"
+  ignore_errors: "yes"
+  register: default_ssh
+
+# If reachable, continue the following tasks with this port
+- name: Set inventory ansible_port to configured port
+  set_fact:
+    ansible_port: "{{ configured_ssh_port }}"
+  when: >
+    default_ssh is defined and
+    default_ssh.state is defined and
+    default_ssh.state == "started"
+  register: ssh_port_set

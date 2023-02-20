@@ -1,0 +1,21 @@
+---
+- include_tasks: check-default.yml
+- include_tasks: check-configured.yml
+
+# If the SSH port is neither the default or the configured, give up.
+- name: Fail if SSH port was not auto-detected (unknown)
+  fail:
+    msg: "The SSH port is neither {{ default_ssh_port }} or {{ configured_ssh_port }}."
+  when: ssh_port_set is undefined
+
+# Sanity check, make sure Ansible is able to connect to the host
+- name: Confirm remote host connection works
+  ping:
+
+- name: "change default SSHd port to {{ configured_ssh_port }}"
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: "^Port|^#Port"
+    line: "Port {{ configured_ssh_port }}"
+  notify: "restart-sshd"
+  when: default_ssh.state is defined
