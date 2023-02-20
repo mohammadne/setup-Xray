@@ -1,2 +1,6 @@
-# hetzner-v2ray
-automated v2ray setup on hetzner cloud
+# Hetzner xray
+
+> automated xray setup on hetzner cloud
+
+```bash
+```
