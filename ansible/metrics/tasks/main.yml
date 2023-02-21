@@ -1,5 +1,5 @@
 ---
-- name: Install the latest version of networking monitoring
+- name: Install networking monitoring tools
   ansible.builtin.package:
     name:
       - tcpdump
