@@ -15,7 +15,7 @@ variable "server_type" {
 
 variable "os_type" {
   type    = string
-  default = "ubuntu-20.04"
+  default = "ubuntu-22.04"
 }
 
 variable "disk_size" {

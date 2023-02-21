@@ -1,0 +1,8 @@
+---
+- name: Install the latest version of networking monitoring
+  ansible.builtin.package:
+    name:
+      - tcpdump
+      - tshark
+      - iptraf-ng
+    state: latest

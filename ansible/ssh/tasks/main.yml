@@ -11,11 +11,10 @@
 # Sanity check, make sure Ansible is able to connect to the host
 - name: Confirm remote host connection works
   ping:
-
-- name: "change default SSHd port to {{ configured_ssh_port }}"
-  lineinfile:
-    dest: "/etc/ssh/sshd_config"
-    regexp: "^Port|^#Port"
-    line: "Port {{ configured_ssh_port }}"
-  notify: "restart-sshd"
-  when: default_ssh.state is defined
+# - name: "change default SSHd port to {{ configured_ssh_port }}"
+#   lineinfile:
+#     dest: "/etc/ssh/sshd_config"
+#     regexp: "^Port|^#Port"
+#     line: "Port {{ configured_ssh_port }}"
+#   notify: "restart-sshd"
+#   when: default_ssh.state is defined

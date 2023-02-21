@@ -1,6 +1,6 @@
 [server]
-91.107.250.15
+37.32.10.19
 
 [server:vars]
-ansible_user=root
-ansible_ssh_private_key_file=~/.ssh/hetzner_ed25519
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/arvan_ed25519

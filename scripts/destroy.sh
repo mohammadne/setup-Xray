@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd ./terraform
-terraform destroy -var-file="secrets.tfvars"
+terraform destroy -var-file="values.tfvars"
