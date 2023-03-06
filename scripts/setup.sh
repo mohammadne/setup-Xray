@@ -11,4 +11,4 @@ server_ip="$(terraform output server_ip)"
 
 echo "$server_ip"
 
-cd ansible_directory
+# cd ansible_directory
